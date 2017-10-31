@@ -1,0 +1,179 @@
+@mixin fontsize($size: 24) {
+    font-size: $size + px;
+    font-size: ( $size / 10)+ rem;
+}
+
+@function get_vw($size, $viewport:320) {
+    $rate: 100 / $viewport;
+    @return $rate * $size * 1vw;
+}
+
+@mixin fz_vw($font_size:10) {
+    font-size: $font_size * 1px;
+    font-size: get_vw($font_size);
+}
+
+$breakpoint-mobile: 768px;
+@mixin max-screen($break-point) {
+    @media screen and (min-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin imgcover {
+    position: relative;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:400,500,700');
+html {
+    font-size: 62.5%;
+    overflow: auto;
+}
+
+body {
+    width: 100%;
+    font-size: 1.4em;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    color: $black;
+    line-height: 1.5;
+    font-family: YuGothic, 'Yu Gothic', 'ヒラギノ角ゴシック', 'Hiragino Sans', 'メイリオ', Meiryo, sans-serif;
+    @include fz_vw(11);
+    @include max-screen($breakpoint-mobile) {
+        @include fontsize(16);
+    }
+    h1 {}
+    h2 {
+        @include fz_vw(26);
+        @include max-screen($breakpoint-mobile) {
+            @include fontsize(40);
+        }
+    }
+    h3 {
+        @include fz_vw(20);
+        @include max-screen($breakpoint-mobile) {
+            @include fontsize(30);
+        }
+    }
+    h4 {
+        @include fz_vw(14);
+            @include max-screen($breakpoint-mobile) {
+                @include fontsize(22);
+            }
+    }
+    h5{
+        @include fz_vw(12);
+        @include max-screen($breakpoint-mobile) {
+            @include fontsize(18);
+        }
+    }
+    figure {
+        width: 100%;
+        overflow: hidden;
+        @include imgcover;
+        -webkit-clip-path: polygon(90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%, 0 0);
+        clip-path: polygon(90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%, 0 0);
+    }
+    img {
+        display: block;
+    }
+    .btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        @include fz_vw(11);
+        @include max-screen($breakpoint-mobile) {
+            margin-top: 40px;
+            @include fontsize(16);
+            font-weight: bold;
+        }
+        a {
+            color: #fff;
+            font-family: $robot;
+            position: relative;
+            display: block;
+            padding: 4vw 0;
+            background-color: $green;
+            border: 1px solid $green;
+            @include max-screen($breakpoint-mobile) {
+                padding: 20px 0;
+            }
+            &:hover {
+                color: $green;
+                background-color: #fff;
+            }
+            &::after {
+                content: "\f105";
+                font-family: icomoon;
+                position: absolute;
+                right: 3%;
+                transform: translate( 0, -2%);
+                @include max-screen($breakpoint-mobile) {
+                    right: 20px;
+                }
+            }
+        }
+    }
+    .btn--orange{
+        @extend .btn;
+        margin-top: 20px;
+        a{
+            background-color: $red;
+            border: 1px solid $red;
+            &:hover {
+                color: $red; 
+            }
+        }
+    }
+    .btn--gray{
+        @extend .btn;
+        margin-top: 20px;
+        a{
+            background-color: $gray__thin;
+            color: $green;
+            border: 1px solid #fff;
+            &:hover {
+                color: #fff; 
+                background-color: $red;
+            }
+        }
+    }
+}
+
+.button,
+.button::before,
+.button::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+a {
+    text-decoration: none;
+    @extend .button;
+}
+
+.pc {
+    @include max-screen($breakpoint-mobile) {
+        display: none;
+    }
+}
+
+.sp {
+    display: none;
+    @include max-screen($breakpoint-mobile) {
+        display: block;
+    }
+}

@@ -1,0 +1,13 @@
+doctype html
+- var sitename = 'Site Title';
+- var desc = 'Description';
+block vars
+html(lang="ja")
+  head
+    include _inc_head
+  body(class=key)
+    include _header
+    +list
+    block contents
+    +list
+    include _footer
