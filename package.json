@@ -15,7 +15,6 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "npm": "^5.4.2",
-    "sc5-styleguide": "^2.0.4"
   },
   "devDependencies": {
     "gulp-jade": "^1.1.0",
