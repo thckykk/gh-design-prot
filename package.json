@@ -1,11 +1,12 @@
 {
-  "name": "pw",
+  "name": "gh-design-prot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -13,11 +14,7 @@
     "gulp-autoprefixer": "^4.0.0",
     "gulp-csscomb": "^3.0.8",
     "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^3.1.0",
-    "npm": "^5.4.2",
-  },
-  "devDependencies": {
-    "gulp-jade": "^1.1.0",
-    "gulp-pug": "^3.3.0"
+    "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0"
   }
 }
